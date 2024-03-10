@@ -19,6 +19,12 @@ class NoteImportantViewHolder(private val noteImportant : NoteImportantItemBindi
         textView.text = note.text
         dateView.text = note.date
 
+        val color = headerView.resources.getColor(R.color.white)
+
+        headerView.setTextColor(color)
+        textView.setTextColor(color)
+        dateView.setTextColor(color)
+
         itemView.setOnClickListener {
             click?.invoke(note)
         }

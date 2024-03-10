@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         initViews()
         setContentView(binding.root)
         actionNote()
+        myAdapter.submitList(ArrayList(SingletonList.getNotes()))
     }
 
 
@@ -61,7 +62,9 @@ class MainActivity : AppCompatActivity() {
 
         myAdapter.onLongClick = {
             SingletonList.importantItem(it)
+            Toast.makeText(this, "note has been important", Toast.LENGTH_SHORT).show()
             myAdapter.submitList(ArrayList(SingletonList.getNotes()))
+            myAdapter.notifyItemChanged(myAdapter.itemCount)
         }
     }
 
@@ -79,7 +82,6 @@ class MainActivity : AppCompatActivity() {
 
         SingletonList.addItem(newItem)
         myAdapter.submitList(ArrayList(SingletonList.getNotes()))
-
 
         headerAdd.text?.clear()
         textAdd.text?.clear()

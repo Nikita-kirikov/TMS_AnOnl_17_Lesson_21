@@ -12,6 +12,8 @@ class GroupViewHolder(private val group : GroupItemBinding) : RecyclerView.ViewH
 
     fun bind(group: Group, onGroupClick : ((Group) -> Unit)?) {
         groupText.text = group.text
+        val color = groupText.resources.getColor(R.color.background_button_start)
+        groupText.setTextColor(color)
 
         itemView.setOnLongClickListener {
             onGroupClick?.invoke(group)

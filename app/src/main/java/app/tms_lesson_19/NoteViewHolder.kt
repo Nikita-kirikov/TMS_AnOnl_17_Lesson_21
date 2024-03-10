@@ -12,10 +12,14 @@ class NoteViewHolder(private val note : NoteItemBinding) : RecyclerView.ViewHold
     private val textView : TextView = note.text
     private val dateView : TextView = note.date
 
+
     fun bind(note: Note, click: ((Note) -> Unit)?, onLongClick: ((Note) -> Unit)?) {
         headerView.text = note.header
         textView.text = note.text
         dateView.text = note.date
+
+        val color = headerView.resources.getColor(R.color.important_note)
+        headerView.setTextColor(color)
 
         itemView.setOnClickListener {
             click?.invoke(note)
